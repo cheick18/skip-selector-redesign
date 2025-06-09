@@ -1,6 +1,5 @@
 import React from 'react'
-import EmptyHeroPage from '../componenta/EmptyHeroPage.'
-EmptyHeroPage
+import EmptyHeroPage from '../components/EmptyHeroPage'
 
 export default function Payment() {
   return (

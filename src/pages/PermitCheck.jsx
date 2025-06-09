@@ -1,5 +1,5 @@
 import React from 'react'
-import EmptyHeroPage from '../componenta/EmptyHeroPage.'
+import EmptyHeroPage from '../components/EmptyHeroPage'
 
 export default function PermitCheck() {
   return (

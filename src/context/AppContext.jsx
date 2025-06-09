@@ -1,6 +1,7 @@
 import React, { createContext, useState } from "react";
 import { StepStatus } from "../types/step";
-import { stepData } from "../componenta/Header/stepsData";
+import { stepData } from "../components/Header/stepsData";
+
 
 // Context creation
 export const AppContext = createContext();

@@ -1,5 +1,5 @@
 
-import EmptyHeroPage from '../componenta/EmptyHeroPage.'
+import EmptyHeroPage from '../components/EmptyHeroPage';
 import { AppContext } from '../context/AppContext';
 
 export default function ChooseDate() {

@@ -1,14 +1,12 @@
 
 
 import { Outlet, Route, Routes } from 'react-router'
-import Header from './componenta/Header/Header'
 import SelectSkip from './pages/SelectSkip'
 import Payment from './pages/Payment'
 import WasteType from './pages/WasteType'
 import PermitCheck from './pages/PermitCheck'
 import ChooseDate from './pages/ChooseDate'
 import Postcode from './pages/Postcode'
-import StepList from './componenta/Header/Header'
 
 function App() {
 

@@ -1,13 +1,13 @@
 import React from "react";
-import SkipCard from "../componenta/SkipCard/SkipCard";
+import SkipCard from "../components/SkipCard/SkipCard";
 import { useEffect } from "react";
 import { useState } from "react";
 import { getSkips } from "../services/skipService";
-import Modale from "../componenta/Modale";
+import Modale from "../components/Modale";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { Loading } from "../componenta/LoadingComponent";
+import { Loading } from "../components/LoadingComponent";
 
 
 function groupSkidCardByTwo(skids) {
@@ -54,7 +54,7 @@ export default function SelectSkip() {
   }, [data]);
 
 
-  // 5. Afficher le résultat ou un état de chargement/erreur
+  
   if (loading) {
     return ( <Loading />)
   }

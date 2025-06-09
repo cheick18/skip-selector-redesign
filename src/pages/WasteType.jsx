@@ -1,6 +1,5 @@
-import React from 'react'
-import StepList from '../componenta/Header/Header'
-import EmptyHeroPage from '../componenta/EmptyHeroPage.'
+import EmptyHeroPage from "../components/EmptyHeroPage";
+
 
 export default function WasteType() {
   return (
