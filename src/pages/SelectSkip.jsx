@@ -9,7 +9,9 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { Loading } from "../components/LoadingComponent";
 
-
+/*
+  Groups skip items into pairs to enhance UX on desktop by enabling scroll animations in sets of two
+*/
 function groupSkidCardByTwo(skids) {
   const groups = [];
   for (let i = 0; i < skids.length; i += 2) {
@@ -29,6 +31,7 @@ export default function SelectSkip() {
   React.useEffect(() => {
     AOS.init({ duration: 600 });
   }, []);
+  /* Fetch skip data from API on component mount */
 
   useEffect(() => {
     const getData = async () => {
@@ -44,26 +47,25 @@ export default function SelectSkip() {
 
     getData();
   }, []);
+  /* Group skip data into pairs when data is loaded */
 
-    useEffect(() => {
-    if ( data&&data.length > 0) {
+  useEffect(() => {
+    if (data && data.length > 0) {
       const grouped = groupSkidCardByTwo(data);
       setGroupedData(grouped);
       console.log("les données groupées", data);
     }
   }, [data]);
 
-
-  
   if (loading) {
-    return ( <Loading />)
+    return <Loading />;
   }
 
   console.log("data", data);
   if (error) {
     return <div>Erreur : {error}</div>;
   }
-  const groupCard=groupSkidCardByTwo(data)
+  const groupCard = groupSkidCardByTwo(data);
 
   console.log("les données groupé", groupCard);
   return (
@@ -75,11 +77,14 @@ export default function SelectSkip() {
         Select the skip size that best suits your needs
       </p>
       <div className="block h-16"></div>
-      {/* Mobile Device */}
+      {/* Mobile Device UI */}
 
       <div className="w-full  h-auto grid  grid-cols-2  gap-10  relative ">
         {data.map((item, index) => (
-          <div className=" w-full col-span-2 sm:col-span-1 bg-red block sm:hidden " key={item.id|| index} >
+          <div
+            className=" w-full col-span-2 sm:col-span-1 bg-red block sm:hidden "
+            key={item.id || index}
+          >
             <SkipCard
               item={item}
               index={index}
@@ -87,29 +92,22 @@ export default function SelectSkip() {
                 setSelectedSkip(skip);
                 setModalOpen(true);
               }}
-              className=''
+              className=""
             />
           </div>
         ))}
-   
-          
-        
-      
       </div>
-           {/**Destop */}
+      {/**Destop Device UI */}
 
       <div className="hidden sm:block w-full">
-         {groupedData?.map((group, groupIndex) => (
+        {groupedData?.map((group, groupIndex) => (
           <div
             key={groupIndex}
             data-aos="fade-up"
             className="grid grid-cols-2 gap-4 mb-8 "
           >
             {group.map((item, index) => (
-              <div
-                key={item.id || index}
-                className=""
-              >
+              <div key={item.id || index} className="">
                 <SkipCard
                   item={item}
                   index={groupIndex * 2 + index}
@@ -123,13 +121,14 @@ export default function SelectSkip() {
           </div>
         ))}
       </div>
-        {selectedSkip && (
-          <Modale
-            skip={selectedSkip}
-            open={modalOpen}
-            onClose={() => setModalOpen(false)}
-          />
-        )}
+      {/* Modal component to display details for the selected skip */}
+      {selectedSkip && (
+        <Modale
+          skip={selectedSkip}
+          open={modalOpen}
+          onClose={() => setModalOpen(false)}
+        />
+      )}
     </div>
   );
 }

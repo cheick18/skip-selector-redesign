@@ -5,7 +5,7 @@ export default function Payment() {
   return (
     
      <div>
-          <EmptyHeroPage  title='Choose Date'  nextLink='' />
+          <EmptyHeroPage  title='Payment'  nextLink='' />
          
           
         </div>
